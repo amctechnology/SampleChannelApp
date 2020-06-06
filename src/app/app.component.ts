@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
-import { initializeComplete, InteractionStates, setAppHeight, SearchRecords, registerClickToDial } from '@amc-technology/davinci-api';
+import { initializeComplete, InteractionStates, setAppHeight, SearchRecords, registerClickToDial, setPresence, onPresenceChanged, registerOnPresenceChanged, registerEnableClickToDial, enableClickToDial } from '@amc-technology/davinci-api';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,13 @@ import { initializeComplete, InteractionStates, setAppHeight, SearchRecords, reg
 export class AppComponent implements OnInit, AfterViewChecked {
   title = 'SampleChannelApp';
 
-  calls: { id: string, number: string, state?: InteractionStates }[] = [];
+  config;
+
+  calls: {
+    id: string,
+    number: string,
+    state?: InteractionStates
+  } [] = [];
   phoneNumbers = [
     '555-123-4567',
     '555-867-5309',
@@ -20,9 +26,19 @@ export class AppComponent implements OnInit, AfterViewChecked {
   constructor() {
     this.callSpecific = this.callSpecific.bind(this);
   }
-  ngOnInit() {
-    initializeComplete();
+
+  async ngOnInit() {
+    await initializeComplete().then(configReturn => {
+      this.config = configReturn;
+    });
     registerClickToDial(this.callSpecific);
+    enableClickToDial(true);
+    setPresence('Not Ready');
+    registerOnPresenceChanged(async (presence, reason, appname) => {
+      if (appname !== this.config.name) {
+        setPresence(presence, reason);
+      }
+    });
   }
 
   ngAfterViewChecked() {
@@ -45,6 +61,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
   removeCall(id: string) {
     this.calls = this.calls.filter(call => call.id !== id);
   }
+
   async callSpecific(phone: string) {
     this.calls = [... this.calls, {
       id: `Call-${Math.random()}`,

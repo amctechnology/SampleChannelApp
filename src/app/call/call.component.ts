@@ -36,6 +36,7 @@ export class CallComponent implements OnInit {
     interactionDetails.setPhone('phoneNumber', 'phoneNumber', this.number);
     this.interaction = {
       interactionId: this.id,
+      scenarioId: this.id,
       direction: InteractionDirectionTypes.Inbound,
       state: InteractionStates.Alerting,
       channelType: ChannelTypes.Telephony,
