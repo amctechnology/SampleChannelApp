@@ -32,7 +32,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
     await initializeComplete().then(configReturn => {
       this.config = configReturn;
     });
-    // TODO: here we need to register for click to dial, and enable it.
+    // TODO: INTERN here we need to register for click to dial, and enable it.
     // The below two lines access methods from our davinci-api (imported at the top of this file) to do so.
     // registerClickToDial(this.callSpecific);
     // enableClickToDial(true);

@@ -16,7 +16,7 @@ import {
   registerScreenpop,
   SearchRecords
 } from '@amc-technology/davinci-api';
-// TODO: Please try to study and review this file. This component is whats actually taking our fake simulated call
+// TODO: INTERN Please try to study and review this file. This component is whats actually taking our fake simulated call
 // and alerting the CRM app of its existence. To let the CRM app know that a call has come in, or that the state has changed, etc
 // It will update the call object and then call our davinci api's method "setInteraction". setInteraction will get caught in the CRM
 // app in the method "onInteraction"
