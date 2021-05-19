@@ -4,7 +4,7 @@ This project is a sample of using [DaVinci API](https://apidocs.contactcanvas.co
 
 This project generates fake calls to a list of phone number and passes the information to the DaVinci api. The important files are [app.component.ts](src/app/app.component.ts) and [call.component.ts](src/app/call/call.component.ts).
 
-To test run the project with `ng serve` then in [Creators Studio](https://studio.contactcanvas.com) create an app with the URL pointing to you local server, http://localhost:4200/ by default, and the position set to 'Center[tabs]'.
+To test run the project with `ng serve` then in [Creators Studio](https://studio-dev.contactcanvas.com) create an app with the URL pointing to you local server, http://localhost:4200/ by default, and the position set to 'Center[tabs]'.
 
 ## Development server
 
@@ -33,21 +33,21 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Running Sample Channel App locally: 
 
-* Open a terminal window and navigate inside the folder that contains the Sample Channel App and enter these commands. 
+* Open a terminal window and navigate to the folder containg this project. 
 
-* cd SampleChannelApp/ 
+* npm install (install dependencies)
 
-* ng serve -o 
+* ng serve -o (start the project and open it)
 
-* The Sample Channel App will run on localhost:4200 
+* A browser window should open at localhost:4200 
 
 
 ## Creating the Applications in Studio 
 
-* Open the creators studio (https://studio.contactcanvas.com) and navigate to the Edit Apps Section 
+* Open the creators studio (https://studio-dev.contactcanvas.com) and navigate to the Edit Apps Section 
 
-* Create a new app with the name “SampleChannelApp” 
+* Create a new app with the name "SampleChannelApp"
 
-* Navigate to the configurations of the app you just created and enter the url configuration as (localhost:4200) 
+* Navigate to the configurations of the app you just created and enter the url configuration as (http://localhost:4200) 
 
 

@@ -1,6 +1,18 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
-import { initializeComplete, InteractionStates, setAppHeight, SearchRecords, registerClickToDial, setPresence, onPresenceChanged, registerOnPresenceChanged, registerEnableClickToDial, enableClickToDial, ChannelTypes, InteractionDirectionTypes } from '@amc-technology/davinci-api';
 import * as api from '@amc-technology/davinci-api';
+import {
+  initializeComplete,
+  InteractionStates,
+  setAppHeight, SearchRecords,
+   registerClickToDial,
+   setPresence,
+   onPresenceChanged,
+   registerOnPresenceChanged,
+   registerEnableClickToDial,
+   enableClickToDial,
+   ChannelTypes,
+   InteractionDirectionTypes } from '@amc-technology/davinci-api';
+
 
 @Component({
   selector: 'app-root',
@@ -36,7 +48,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
     // The below two lines access methods from our davinci-api (imported at the top of this file) to do so.
     // registerClickToDial(this.callSpecific);
     // enableClickToDial(true);
-    setPresence('Not Ready');
+
     registerOnPresenceChanged(async (presence, reason, appname) => {
       if (appname !== this.config.name) {
         setPresence(presence, reason);
