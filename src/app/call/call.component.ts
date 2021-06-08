@@ -8,9 +8,9 @@ import {
 import {
   setInteraction,
   IInteraction,
-  InteractionDirectionTypes,
-  ChannelTypes,
-  InteractionStates,
+  INTERACTION_DIRECTION_TYPES,
+  CHANNEL_TYPES,
+  INTERACTION_STATES,
   RecordItem,
   registerClickToDial,
   registerScreenpop,
@@ -40,9 +40,9 @@ export class CallComponent implements OnInit {
     this.interaction = {
       interactionId: this.id,
       scenarioId: this.id,
-      direction: InteractionDirectionTypes.Inbound,
-      state: InteractionStates.Alerting,
-      channelType: ChannelTypes.Telephony,
+      direction: INTERACTION_DIRECTION_TYPES.Inbound,
+      state: INTERACTION_STATES.Alerting,
+      channelType: CHANNEL_TYPES.Telephony,
       details: interactionDetails
     };
 
@@ -50,12 +50,12 @@ export class CallComponent implements OnInit {
   }
 
   answerCall() {
-    this.interaction.state = InteractionStates.Connected;
+    this.interaction.state = INTERACTION_STATES.Connected;
     setInteraction(this.interaction);
   }
 
   endCall() {
-    this.interaction.state = InteractionStates.Disconnected;
+    this.interaction.state = INTERACTION_STATES.Disconnected;
     setInteraction(this.interaction);
     this.removeCall();
   }
@@ -64,14 +64,14 @@ export class CallComponent implements OnInit {
     this.callEnd.emit();
   }
   holdCall() {
-    this.interaction.state = InteractionStates.OnHold;
+    this.interaction.state = INTERACTION_STATES.OnHold;
     setInteraction(this.interaction);
   }
   unholdCall() {
-    this.interaction.state = InteractionStates.Connected;
+    this.interaction.state = INTERACTION_STATES.Connected;
     setInteraction(this.interaction);
   }
-  getInteractionStateAsString(state: InteractionStates) {
-    return InteractionStates[state];
+  getInteractionStateAsString(state: INTERACTION_STATES) {
+    return INTERACTION_STATES[state];
   }
 }

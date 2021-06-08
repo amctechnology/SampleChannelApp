@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import * as api from '@amc-technology/davinci-api';
 import {
   initializeComplete,
-  InteractionStates,
+  INTERACTION_STATES,
   setAppHeight, SearchRecords,
    registerClickToDial,
    setPresence,
@@ -10,8 +10,8 @@ import {
    registerOnPresenceChanged,
    registerEnableClickToDial,
    enableClickToDial,
-   ChannelTypes,
-   InteractionDirectionTypes } from '@amc-technology/davinci-api';
+   CHANNEL_TYPES,
+   INTERACTION_DIRECTION_TYPES } from '@amc-technology/davinci-api';
 
 
 @Component({
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
   calls: {
     id: string,
     number: string,
-    state?: InteractionStates
+    state?: INTERACTION_STATES
   } [] = [];
   phoneNumbers = [
     '555-123-4567',
@@ -81,7 +81,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
     this.calls = [... this.calls, {
       id: `Call-${Math.random()}`,
       number: phone,
-      state: InteractionStates.Connected
+      state: INTERACTION_STATES.Connected
     }];
   }
 }
